@@ -1,21 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import {BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs"
 import image from "../../assets/images/HelloSummerLogo.png";
+import {BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs"
 
 const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [password, setPassword] = useState("");
-
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
-
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
-
     return (
         <section className="bg-white">
             <div className="grid grid-cols-1 lg:grid-cols-2">
