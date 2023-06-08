@@ -6,7 +6,12 @@ import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import ErrorElement from '../pages/ErrorPage/ErrorElement';
 import PrivateRoute from './PrivateRoute';
-import Dashboard from '../pages/Dashboard/Dashboard';
+
+import Instructors from '../pages/Instructors/Instructors';
+import Classes from '../pages/Classes/Classes';
+import Dashboard from '../layout/Dashboard/Dashboard';
+import ManageUser from '../pages/Dashboard/Admin/ManageUser';
+import AddClass from '../pages/Dashboard/Instructor/AddClass';
 
 const router = createBrowserRouter([
     {
@@ -27,11 +32,31 @@ const router = createBrowserRouter([
           element : <Register></Register>
         },
         {
-          path: "/dashboard",
-          element : <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
-        }
+          path: "/instructors",
+          element : <Instructors></Instructors>
+        },
+        {
+          path: "/classes",
+          element : <Classes></Classes>
+        },
+       
       ]
     },
+    {
+      path : 'dashboard',
+      element : <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      errorElement : <ErrorElement></ErrorElement>,
+      children : [
+        {
+          path: 'dashboard/manageUser',
+          element : <ManageUser></ManageUser>
+        },
+        {
+          path: 'dashboard/addClass',
+          element : <AddClass></AddClass>
+        },
+      ]
+    }
   ]);
 
 export default router;

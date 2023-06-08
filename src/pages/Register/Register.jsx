@@ -4,14 +4,13 @@ import { useForm } from "react-hook-form";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
-import { updateProfile } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import useTitle from "../../hooks/useTitle";
 
 
 const Register = () => {
     useTitle("SignUp")
-    const { signUpEmailPassword, signInGoogle, logOut } = useContext(AuthContext)
+    const { signUpEmailPassword, signInGoogle, updateUserProfile, logOut } = useContext(AuthContext)
     const navigate = useNavigate()
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -31,8 +30,21 @@ const Register = () => {
     }
     const handleGoogleSignIn = () => {
         signInGoogle()
-            .then(() => {
-
+            .then((result) => {
+                console.log(result);
+                const savedUser = { name: result.user.displayName, email: result.user.email, photo: result.user.photoURL }
+                console.log(savedUser);
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
             })
             .catch((error) => {
                 alert(error.message)
@@ -42,22 +54,34 @@ const Register = () => {
     const password = watch("password", "");
     const onSubmit = data => {
         signUpEmailPassword(data.email, data.password)
-            .then((result) => {
-                const loggedUser = result.user;
-                updateProfile(loggedUser, {
-                    displayName: data.name,
-                    photoURL: data.photo
-                })
+            .then(() => {
+                updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        reset();
-                        logOut()
-                            .then(() => { })
-                            .catch(() => { })
-                        navigate('/login')
+                        const saveUser = { name: data.name, email: data.email, photo: data.photo }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    logOut()
+                                        .then(() => {
+                                            reset();
+                                            navigate('/login');
+                                        })
+                                        .catch(() => { })
+                                }
+                            })
                     })
-                    .catch(() => { })
+                    .catch(error => console.log(error))
             })
-            .catch(() => { })
+            .catch((error) => {
+                alert(error.message)
+            })
     }
     return (
         <section className="bg-white ">
@@ -65,7 +89,7 @@ const Register = () => {
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">
                         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
-                          Register a new account
+                            Register a new account
                         </h2>
                         <p className="mt-2 text-base text-gray-600">
                             Already have an account?{" "}

@@ -21,10 +21,22 @@ const Login = () => {
     };
     const handleGoogleSignIn = () => {
         signInGoogle()
+        .then((result) => {
+            console.log(result);
+            const savedUser = {name : result.user.displayName, email : result.user.email, photo : result.user.photoURL}
+            console.log(savedUser);
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers : {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(savedUser)
+            })
+            .then(res=> res.json())
             .then(() => {
-                
                 navigate(from, { replace: true })
             })
+        })
             .catch((error) => {
                 alert(error.message)
             });
