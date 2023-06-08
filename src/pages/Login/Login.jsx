@@ -5,8 +5,10 @@ import image from "../../assets/images/HelloSummerLogo.png";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs"
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+    useTitle("Login");
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname

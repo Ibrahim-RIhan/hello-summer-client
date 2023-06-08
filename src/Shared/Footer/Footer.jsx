@@ -1,10 +1,10 @@
-import React from 'react';
+
 import logo from '../../assets/images/HelloSummerLogo.png'
 
 const Footer = () => {
     return (
         <div>
-            <footer className="footer-center footer md:footer justify-evenly items-center align-middle p-10  ">
+            <footer className="footer-center  bg-teal-200  rounded-lg footer md:footer justify-evenly items-center align-middle p-10  ">
                 <div className='text-center'>
                     <img className='w-20' src={logo} alt="" />
                     <p className='text-xl font-semibold'>Hello Summer</p>
@@ -22,7 +22,7 @@ const Footer = () => {
                     <p className='font-semibold opacity-70'>Email Us : helloSummer@info.com</p>
                 </div>
             </footer>
-            <div className="items-center grid-flow-col text-center bg-teal-200 justify-center p-5">
+            <div className="items-center grid-flow-col text-center text-white bg-stone-800 justify-center p-5">
                 <p className='text-lg font-semibold'>Copyright © 2023 - All right reserved</p>
             </div>
 

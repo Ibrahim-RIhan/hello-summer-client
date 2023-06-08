@@ -6,9 +6,11 @@ import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
+import useTitle from "../../hooks/useTitle";
 
 
 const Register = () => {
+    useTitle("SignUp")
     const { signUpEmailPassword, signInGoogle, logOut } = useContext(AuthContext)
     const navigate = useNavigate()
     const [passwordVisible, setPasswordVisible] = useState(false);
