@@ -3,12 +3,13 @@ import image from "../../assets/images/HelloSummerLogo.png";
 import { useForm } from "react-hook-form";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
 
 
 const Register = () => {
-    const { signUpEmailPassword, logOut } = useContext(AuthContext)
+    const { signUpEmailPassword, signInGoogle, logOut } = useContext(AuthContext)
     const navigate = useNavigate()
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -25,6 +26,15 @@ const Register = () => {
     };
     const handleConfirmPasswordChange = (e) => {
         setConfirmPassword(e.target.value);
+    }
+    const handleGoogleSignIn = () => {
+        signInGoogle()
+            .then(() => {
+
+            })
+            .catch((error) => {
+                alert(error.message)
+            });
     }
     const { register, reset, handleSubmit, formState: { errors }, watch } = useForm();
     const password = watch("password", "");
@@ -52,11 +62,25 @@ const Register = () => {
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">
+                        <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
+                          Register a new account
+                        </h2>
+                        <p className="mt-2 text-base text-gray-600">
+                            Already have an account?{" "}
+                            <Link
+                                to="/login"
+                                className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline focus:text-blue-700"
+                            >
+                                Please login!
+                            </Link>
+                        </p>
                         <div>
                             <img className="w-full mx-auto" src={image} />
                         </div>
+
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-emerald-400">
+
                         <form className="card-body" onSubmit={handleSubmit(onSubmit)} >
 
                             {/* Name  */}
@@ -137,7 +161,7 @@ const Register = () => {
                                         className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
                                         onClick={toggleConfirmPasswordVisibility}
                                     >
-                                        {passwordVisible ?
+                                        {confirmPasswordVisible ?
                                             <BsFillEyeSlashFill></BsFillEyeSlashFill>
                                             : <BsFillEyeFill></BsFillEyeFill>
                                         }
@@ -151,14 +175,29 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text"> Your Photo URl</span>
                                 </label>
-                                <input type="text" {...register("photo", { required: true })} className="input block input-bordered input-info w-full max-w-xs" />
+                                <input type="text"
+                                    placeholder="Photo URL"
+                                    {...register("photo", { required: true })} className="input block input-bordered input-info w-full max-w-xs" />
                                 {errors.photo?.type === 'required' && <p>Photo is required</p>}
                             </div>
 
                             {/* Submit Button  */}
 
-                            <div className="form-control mt-6">
-                                <input className="btn" type="submit" value="Register" />
+                            <div className="flex mt-4 flex-col items-center justify-center w-full lg:flex-row">
+                                <div className="form-control">
+                                    <input className="btn" type="submit" value="Register" />
+                                </div>
+                                <div className="divider lg:divider-horizontal">OR</div>
+                                <div className=" space-y-3">
+                                    <button
+                                        onClick={handleGoogleSignIn}
+                                        type="button"
+                                        className="btn"
+                                    >
+                                        <FcGoogle></FcGoogle> Google
+                                    </button>
+                                </div>
+
                             </div>
 
                         </form>

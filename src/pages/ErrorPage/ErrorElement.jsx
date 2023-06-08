@@ -1,25 +1,23 @@
-// import React from 'react';
-// import Lottie from 'react-lottie';
-// import animationData from './ErrorPageAnimation.json'
-// import { Link } from 'react-router-dom';
+import { useLottie } from 'lottie-react';
+import animationData from './ErrorPageAnimation.json'
+import { Link } from 'react-router-dom';
 
-// const ErrorElement = () => {
-//     const defaultOptions = {
-//         loop: true,
-//         autoplay: true,
-//         animationData: animationData,
-//     };
-//     return (
-//         <div style={{height:'10vh'}}>
-//             <Lottie options={defaultOptions}
-//                 height={600}
-//             />
-//             <div className='flex justify-center items-center'>
-//             <Link to="/"><button className='btn  btn-neutral my-10'>Go to Home</button></Link>
-//             </div>
+const ErrorElement = () => {
+    const options = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+    };
+    const { View } = useLottie(options);
+    return (
+        <div style={{height:'10vh'}}>
+            {View}
+            <div className='flex justify-center items-center'>
+            <Link to="/"><button className='btn  btn-neutral my-10'>Go to Home</button></Link>
+            </div>
 
-//         </div>
-//     );
-// };
+        </div>
+    );
+};
 
-// export default ErrorElement;
+export default ErrorElement;
