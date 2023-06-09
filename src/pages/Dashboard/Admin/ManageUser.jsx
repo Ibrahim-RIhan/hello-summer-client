@@ -30,7 +30,7 @@ const ManageUser = () => {
     }
     return (
         <div>
-            <p>{users.length}</p>
+
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -40,11 +40,8 @@ const ManageUser = () => {
                             <th>Photo</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Admin
-                            </th>
-                            <th>
-                                Instructor
-                            </th>
+                            <th>Admin</th>
+                            <th>Instructor</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,12 +56,20 @@ const ManageUser = () => {
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>
                                 <td>
-                                    <RiAdminLine onClick={() => handleMakeAdmin(user)}></RiAdminLine>
-                                    <MdVerifiedUser></MdVerifiedUser>
+                                    {
+                                        user?.role == "admin" ? <MdVerifiedUser className="text-2xl"></MdVerifiedUser> :
+                                            <RiAdminLine className="text-2xl" onClick={() => handleMakeAdmin(user)}></RiAdminLine>
+                                    }
+
                                 </td>
                                 <td>
-                                    <FaChalkboardTeacher onClick={() => handleMakeInstructor(user)}></FaChalkboardTeacher>
-                                    <MdVerifiedUser></MdVerifiedUser>
+                                    {
+                                        user?.role == "instructor" ? <MdVerifiedUser className="text-2xl"></MdVerifiedUser> :
+                                            <FaChalkboardTeacher className="text-2xl" onClick={() => handleMakeInstructor(user)}></FaChalkboardTeacher>
+                                    }
+
+
+
                                 </td>
                             </tr>)
                         }
