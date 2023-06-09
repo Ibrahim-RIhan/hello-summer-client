@@ -1,16 +1,16 @@
+import useClasses from "../../../hooks/useClasses";
 
-import useUsers from "../../../hooks/useUsers";
+
 
 
 const ManageClasses = () => {
-    // const [classes] = useClasses();
-    const [users] = useUsers()
-    // console.log(classes);
+    const [classes] = useClasses()
+
+    console.log(classes);
     return (
         <div>
-            {/* {classes.length} */}
-            {users.length}
-            HEllo
+            {classes.length}
+          
         </div>
     );
 };

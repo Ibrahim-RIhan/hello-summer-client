@@ -1,18 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
+
+import { useState } from "react";
+import { useEffect } from "react";
 
 
 
 
 const useUsers = () => {
-    
-    const {  data: users = [] , refetch } = useQuery({
-        queryKey: ['users'],
-       queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users`)
-            return res.json();
-        },
-})
-return [users, refetch]
+
+    const [users, setUsers] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/users')
+            .then(res => res.json())
+            .then(data => setUsers(data))
+    }, [])
+    return [users]
+
 };
 
 export default useUsers;
