@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthProvider/AuthProvider";
 import 'react-awesome-button/dist/styles.css';
-import { AwesomeButton, AwesomeButtonSocial } from "react-awesome-button";
+import { AwesomeButton, } from "react-awesome-button";
 
 
 const AddClass = () => {
