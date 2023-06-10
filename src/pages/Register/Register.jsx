@@ -32,7 +32,7 @@ const Register = () => {
         signInGoogle()
             .then((result) => {
                 console.log(result);
-                const savedUser = { name: result.user.displayName, email: result.user.email, photo: result.user.photoURL }
+                const savedUser = { name: result.user.displayName, email: result.user.email, photo: result.user.photoURL, role : 'Student' }
                 console.log(savedUser);
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
@@ -57,7 +57,7 @@ const Register = () => {
             .then(() => {
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email, photo: data.photo }
+                        const saveUser = { name: data.name, email: data.email, photo: data.photo ,role: 'Student' }
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {

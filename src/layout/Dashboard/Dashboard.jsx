@@ -3,8 +3,14 @@ import Navbar from '../../Shared/Navbar/Navbar';
 import Footer from '../../Shared/Footer/Footer';
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
+
 
 const Dashboard = () => {
+  const [isAdmin] = useAdmin();
+  const [isInstructor] =useInstructor();
+  console.log(isInstructor);
+  console.log(isAdmin);
   
     const studentItems = <>
     <li><Link>My Selected Classes</Link></li>
@@ -33,7 +39,7 @@ const Dashboard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                    {/* {isAdmin? <>{AdminItems}</> : <>{instructorItems}{studentItems}</>} */}
+                    {/* {isAdmin? <>{AdminItems}</> : isInstructor ? <>{instructorItems} </>: <>{studentItems}{AdminItems}</>} */}
                     {AdminItems}{studentItems}{instructorItems}
                     </ul>
 

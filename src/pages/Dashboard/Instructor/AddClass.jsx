@@ -4,19 +4,24 @@ import { AuthContext } from "../../../providers/AuthProvider/AuthProvider";
 import 'react-awesome-button/dist/styles.css';
 import { AwesomeButton, } from "react-awesome-button";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const AddClass = () => {
     const { user } = useContext(AuthContext)
-    const status ="pending"
+    const status ="Pending"
     const enrolled = 0;
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
         const {className,classImage,instructorName,instructorEmail,seats,price} = data
         const newItem = {className,classImage,instructorName,instructorEmail,seats,price : parseFloat(price),status,enrolled}
-        console.log(newItem);
         axios.post('http://localhost:5000/classes', newItem )
-        .then((data)={})
+        .then((data)=>{
+            if(data.data.acknowledged){
+                Swal.fire('Class Added Successfully')
+                reset();
+            }
+        })
     }
 
     return (
