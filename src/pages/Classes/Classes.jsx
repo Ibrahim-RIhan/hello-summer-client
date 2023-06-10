@@ -14,9 +14,10 @@ const Classes = () => {
                 
                 {
                     approvedClasses.map((singleClass) =>
+
                         <div
                             key={singleClass._id}
-                            className="card my-5 lg:card-side bg-base-100 shadow-xl">
+                            className={`card my-5 lg:card-side ${singleClass.seats === "0" ? 'bg-red-500' : 'bg-base-100'} classCard shadow-xl`}>
                             <figure className="flex justify-center ml-5 rounded-lg"><img className="w-64" src={singleClass.classImage} alt="Album" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title"> Course Name : {singleClass.className} </h2>

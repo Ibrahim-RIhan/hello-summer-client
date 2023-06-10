@@ -11,10 +11,11 @@ const AddClass = () => {
     const { user } = useContext(AuthContext)
     const status ="Pending"
     const enrolled = 0;
+    const feedback = "No Feedback"
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
         const {className,classImage,instructorName,instructorEmail,seats,price} = data
-        const newItem = {className,classImage,instructorName,instructorEmail,seats,price : parseFloat(price),status,enrolled}
+        const newItem = {className,classImage,instructorName,instructorEmail,seats,price : parseFloat(price),status,enrolled, feedback}
         axios.post('http://localhost:5000/classes', newItem )
         .then((data)=>{
             if(data.data.acknowledged){
