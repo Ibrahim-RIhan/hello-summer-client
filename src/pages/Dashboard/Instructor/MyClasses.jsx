@@ -26,7 +26,7 @@ const MyClasses = () => {
                                 </h2>
                                 <p>Total Enrolled Student : {singleClass.enrolled}</p>
                                 {
-                                    singleClass.status === "Pending" && singleClass.status === "Deny" ? <></> : <><p>{singleClass.feedback}</p></>
+                                    singleClass.status === "Pending" && singleClass.status === "Approved" ? <></> : <><p>{singleClass.feedback}</p></>
                                 }
                                 <div className="card-actions justify-end items-center">
                                     <div className={singleClass.status === 'Approved' ? 'bg-green-500 text-white badge badge-outline py-3 ' : singleClass.status === 'Pending' ? "badge bg-yellow-400 text-red-500 badge-outline py-3" : singleClass.status === "Deny" ? "badge badge-outline bg-red-500 text-white py-3 " : ""}>{singleClass.status}</div>
