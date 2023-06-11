@@ -13,7 +13,6 @@ import ManageUser from '../pages/Dashboard/Admin/ManageUser';
 import AddClass from '../pages/Dashboard/Instructor/AddClass';
 import ManageClasses from '../pages/Dashboard/Admin/ManageClasses';
 import MyClasses from '../pages/Dashboard/Instructor/MyClasses';
-import MyClasses from '../pages/Dashboard/Instructor/MyClasses';
 import MySelectedClass from '../pages/Dashboard/Student/mySelectedClass';
 
 const router = createBrowserRouter([
