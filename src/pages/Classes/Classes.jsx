@@ -4,14 +4,13 @@ import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import useSelectedClass from "../../hooks/useSelectedClass";
 
 
 
 const Classes = () => {
     const [classes] = useClasses();
-    const [selectedClasses, refetch] = useSelectedClass()
+    const [selectedClasses] = useSelectedClass()
     const navigate = useNavigate()
     const { user } = useContext(AuthContext)
 
@@ -22,10 +21,7 @@ const Classes = () => {
 
     const handleSelectClass = Class => {
         if (user) {
-            const selectedId = selectedClasses.filter(item => item.classId === Class._id);
-
             const selectedClass = { classId: Class._id, className: Class.className, image: Class.classImage, price: Class.price, email: user.email, instructorName: Class.instructorName, seats: Class.seats, }
-            console.log(selectedClass);
             axios.post('http://localhost:5000/selectedClass', selectedClass)
                 .then((response) => {
                     if (response.data.acknowledged) {
