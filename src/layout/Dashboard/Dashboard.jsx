@@ -13,7 +13,7 @@ const Dashboard = () => {
   console.log(isAdmin);
   
     const studentItems = <>
-    <li><Link>My Selected Classes</Link></li>
+    <li><Link to="dashboard/selectedClass">My Selected Classes</Link></li>
     <li><Link>My Enrolled Classes</Link></li>
     <li><Link>My Payment History</Link></li>
     </>
