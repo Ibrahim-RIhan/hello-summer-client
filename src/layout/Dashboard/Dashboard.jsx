@@ -19,7 +19,7 @@ const Dashboard = () => {
     </>
     const instructorItems = <>
     <li><Link to="dashboard/addClass">Add A Class</Link></li>
-    <li><Link>My Classes</Link></li>
+    <li><Link to="dashboard/myClass">My Classes</Link></li>
     </>
     const AdminItems = <>
     <li><Link to="dashboard/manageUser">Manage User</Link></li>
