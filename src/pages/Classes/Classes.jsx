@@ -16,7 +16,7 @@ const Classes = () => {
 
     const approvedClasses = classes.filter(item => item.status === 'Approved')
     if (approvedClasses.length == 0) {
-        return <div style={{ height: '80vh' }} className="flex justify-center  items-center text-red-400"><h1 className="font-semibold text-5xl">No Class</h1></div>
+        return <div style={{ height: '80vh' }} className="flex justify-center  items-center text-purple-500"><h1 className="font-semibold text-5xl">No Class</h1></div>
     }
 
     const handleSelectClass = Class => {

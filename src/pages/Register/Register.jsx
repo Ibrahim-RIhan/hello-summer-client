@@ -106,7 +106,7 @@ const Register = () => {
                         </div>
 
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-emerald-400">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl text-white bg-purple-500">
 
                         <form className="card-body" onSubmit={handleSubmit(onSubmit)} >
 

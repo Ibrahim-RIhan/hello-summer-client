@@ -15,12 +15,11 @@ const ManageClasses = () => {
         setShowModal(false);
     };
     const handleApprove = id => {
-        axios.patch(`http://localhost:5000/classes/approve/${id}`)
+        axios.patch(`http://localhost:5000/classes/approved/${id}`)
             .then((response) => {
                 if (response.data.modifiedCount) {
                     Swal.fire(
                         'Successfully Approved',
-                        'success'
                     )
                     refetch()
                 }
@@ -32,7 +31,6 @@ const ManageClasses = () => {
                 if (response.data.modifiedCount) {
                     Swal.fire(
                         'Successfully Denied',
-                        'success'
                     )
                     refetch()
                 }

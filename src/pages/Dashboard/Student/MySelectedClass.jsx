@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 
 const MySelectedClass = () => {
     const [selectedClasses, refetch] = useSelectedClass();
+    if (selectedClasses.length == 0) {
+        return <div style={{ height: '80vh' }} className="flex justify-center  items-center text-purple-500"><h1 className="font-semibold text-5xl">No Selected Class</h1></div>
+    }
     const handleDelete = c => {
         const id = c._id;
         Swal.fire({
@@ -20,7 +23,7 @@ const MySelectedClass = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`shttp://localhost:5000/electedClass/${id}`)
+                    axios.delete(`http://localhost:5000/selectedClass/${id}`)
                         .then(() => {
                             Swal.fire(
                                 'Deleted!',
@@ -42,7 +45,7 @@ const MySelectedClass = () => {
                     <div className="card-body">
                         <h2 className="card-title">{item.className}</h2>
                         <p>Instructor Name : {item.instructorName}</p>
-                        <p>{item.price}</p>
+                        <p>Price : ${item.price}</p>
                         <div className="card-actions justify-end">
                             <button onClick={() => handleDelete(item)} className=" badge-lg badge badge-error ">Delete</button>
                             <Link to={`/dashboard/payment/${item}`} className=" badge-lg badge badge-accent">Enroll Now</Link>

@@ -27,8 +27,8 @@ const ManageUser = () => {
                             refetch()
                             if (data.modifiedCount) {
                                 Swal.fire(
+                                   
                                     'Make Admin Successful',
-                                    'success'
                                 )
                             }
                         })
@@ -57,8 +57,8 @@ const ManageUser = () => {
                         refetch()
                         if (data.modifiedCount) {
                             Swal.fire(
+                               
                                 'Make Instructor Successful',
-                                'success'
                             )
                         }
                     })
