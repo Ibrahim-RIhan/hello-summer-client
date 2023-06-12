@@ -16,7 +16,7 @@ const AddClass = () => {
     const onSubmit = data => {
         const { className, classImage, instructorName, instructorEmail, seats, price } = data
         const newItem = { className, classImage, instructorName, instructorEmail, seats, price: parseFloat(price), status, enrolled, feedback }
-        axios.post('http://localhost:5000/classes', newItem)
+        axios.post('https://hello-summer-server-opal.vercel.app/classes', newItem)
             .then((data) => {
                 if (data.data.acknowledged) {
                     Swal.fire('Class Added Successfully')

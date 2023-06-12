@@ -25,7 +25,7 @@ const Login = () => {
             console.log(result);
             const savedUser = {name : result.user.displayName, email : result.user.email, photo : result.user.photoURL, role:"Student"};
        
-            fetch('http://localhost:5000/users', {
+            fetch('https://hello-summer-server-opal.vercel.app/users', {
                 method: 'POST',
                 headers : {
                     'content-type': 'application/json'

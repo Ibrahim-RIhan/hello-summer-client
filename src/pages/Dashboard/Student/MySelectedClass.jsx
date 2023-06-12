@@ -23,7 +23,7 @@ const MySelectedClass = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`http://localhost:5000/selectedClass/${id}`)
+                    axios.delete(`https://hello-summer-server-opal.vercel.app/selectedClass/${id}`)
                         .then(() => {
                             Swal.fire(
                                 'Deleted!',

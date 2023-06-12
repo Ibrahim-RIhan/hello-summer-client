@@ -22,7 +22,7 @@ const Classes = () => {
     const handleSelectClass = Class => {
         if (user) {
             const selectedClass = { classId: Class._id, className: Class.className, image: Class.classImage, price: Class.price, email: user.email, instructorName: Class.instructorName, seats: Class.seats, }
-            axios.post('http://localhost:5000/selectedClass', selectedClass)
+            axios.post('https://hello-summer-server-opal.vercel.app/selectedClass', selectedClass)
                 .then((response) => {
                     if (response.data.acknowledged) {
                         Swal.fire('Class Added to your selected Class Successfully')

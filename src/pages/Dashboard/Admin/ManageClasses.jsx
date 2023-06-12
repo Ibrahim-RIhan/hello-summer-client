@@ -15,7 +15,7 @@ const ManageClasses = () => {
         setShowModal(false);
     };
     const handleApprove = id => {
-        axios.patch(`http://localhost:5000/classes/approved/${id}`)
+        axios.patch(`https://hello-summer-server-opal.vercel.app/classes/approved/${id}`)
             .then((response) => {
                 if (response.data.modifiedCount) {
                     Swal.fire(
@@ -26,7 +26,7 @@ const ManageClasses = () => {
             })
     }
     const handleDeny = id => {
-        axios.patch(`http://localhost:5000/classes/deny/${id}`)
+        axios.patch(`https://hello-summer-server-opal.vercel.app/classes/deny/${id}`)
             .then((response) => {
                 if (response.data.modifiedCount) {
                     Swal.fire(
@@ -43,7 +43,7 @@ const ManageClasses = () => {
         const form = event.target;
         const feedback = form.feedback.value;
         const newFeedback = {feedback}
-        axios.patch(`http://localhost:5000/classes/feedback/${id}` , newFeedback)
+        axios.patch(`https://hello-summer-server-opal.vercel.app/classes/feedback/${id}` , newFeedback)
         .then(() =>{
            setShowModal(false)
            setclassID(null)

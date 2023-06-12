@@ -16,7 +16,7 @@ const CheckoutForm = ({ price ,classId }) => {
     const [clientSecret, setClientSecret] = useState('')
     const finalPrice = parseFloat(price)
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://hello-summer-server-opal.vercel.app/create-payment-intent', {
             method: 'POST',
             headers :{
                 'content-type': 'application/json'
@@ -72,7 +72,7 @@ if(paymentIntent.status=== 'succeeded'){
    setTransactionId(paymentIntent.id)
 const payment = {email: user.email, transactionId : paymentIntent.id , finalPrice , classId }
 console.log(payment);
-axios.post('http://localhost:5000/payments' ,payment)
+axios.post('https://hello-summer-server-opal.vercel.app/payments' ,payment)
 .then(res => {
     console.log(res.data);
     if(res.data.insertedId){

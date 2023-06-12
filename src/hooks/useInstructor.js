@@ -9,7 +9,7 @@ const useInstructor = () => {
     const {data: isInstructor, isLoading: isInstructorLoading} = useQuery({
         queryKey: ['isInstructor'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/users/instructor/${user?.email}`);
+            const res = await axios.get(`https://hello-summer-server-opal.vercel.app/users/instructor/${user?.email}`);
             return res.data.instructor;
         }
     })

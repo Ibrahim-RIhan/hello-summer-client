@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
             // if(currentUser){
-            //     axios.post('http://localhost:5000jwt', {email: currentUser.email})
+            //     axios.post('https://hello-summer-server-opal.vercel.app/jwt', {email: currentUser.email})
             //     .then(data =>{
             //         localStorage.setItem('access-token', data.data.token)
             //         setLoading(false);
