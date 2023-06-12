@@ -8,6 +8,7 @@ import useInstructor from '../../hooks/useInstructor';
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
+  console.log(isAdmin);
   const [isInstructor] =useInstructor();
  
   
@@ -39,8 +40,8 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                  
-                  {/* {isAdmin && <>{AdminItems}</> || isInstructor && <>{instructorItems}</> || <>{studentItems}</>} */}
-                    {AdminItems}{studentItems}{instructorItems}
+                  {isAdmin && <>{AdminItems}</> || isInstructor && <>{instructorItems}</> || <>{studentItems}</>}
+                    {/* {AdminItems}{studentItems}{instructorItems} */}
                     </ul>
 
                 </div>

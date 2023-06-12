@@ -4,7 +4,6 @@ import useUsers from "../../hooks/useUsers";
 const Instructors = () => {
     const [users] = useUsers();
     const instructors = users.filter(item => item.role === 'Instructor')
-    console.log(instructors);
     return (
         <div className="my-10 ">
             <h1 className="text-3xl text-center font-bold text-blue-500 my-10 ">Meet Our Instructors</h1>
