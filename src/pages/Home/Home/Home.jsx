@@ -1,6 +1,7 @@
 import useTitle from "../../../hooks/useTitle";
 import Banner from "../Banner/Banner";
 import Feedback from "../Feedback/Feedback";
+import PopularClass from "../PopularClass/PopularClass";
 import PopularInstructor from "../PopularInstructor/PopularInstructor";
 import FaqSection from "./FaqSection";
 
@@ -11,6 +12,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <PopularClass></PopularClass>
           <PopularInstructor></PopularInstructor>
             <Feedback></Feedback>
             <FaqSection></FaqSection>

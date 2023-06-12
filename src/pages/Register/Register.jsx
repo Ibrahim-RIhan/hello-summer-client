@@ -41,7 +41,7 @@ const Register = () => {
                     body: JSON.stringify(savedUser)
                 })
                     .then(res => res.json())
-                    .then(data => {
+                    .then(() => {
                         Swal.fire('User Created Successfully')
                     })
             })

@@ -7,14 +7,14 @@ import useInstructor from '../../hooks/useInstructor';
 
 
 const Dashboard = () => {
-//   const [isAdmin] = useAdmin();
-//   const [isInstructor] =useInstructor();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] =useInstructor();
  
   
     const studentItems = <>
     <li><Link to="dashboard/selectedClass">My Selected Classes</Link></li>
-    <li><Link>My Enrolled Classes</Link></li>
-    <li><Link>My Payment History</Link></li>
+    <li><Link to="dashboard/enrolledClass">My Enrolled Classes</Link></li>
+    <li><Link to="dashboard/paymentHistory">My Payment History</Link></li>
     </>
     const instructorItems = <>
     <li><Link to="dashboard/addClass">Add A Class</Link></li>
@@ -38,7 +38,8 @@ const Dashboard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                    {/* {isAdmin? <>{AdminItems}</> : isInstructor ? <>{instructorItems} </>: <>{studentItems}{AdminItems}</>} */}
+                 
+                  {/* {isAdmin && <>{AdminItems}</> || isInstructor && <>{instructorItems}</> || <>{studentItems}</>} */}
                     {AdminItems}{studentItems}{instructorItems}
                     </ul>
 

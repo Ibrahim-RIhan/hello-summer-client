@@ -1,6 +1,11 @@
-
-
+import "swiper/css";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
 import useUsers from "../../../hooks/useUsers";
+
+
+
+// import required modules
 
 
 const PopularInstructor = () => {
@@ -9,27 +14,40 @@ const PopularInstructor = () => {
     console.log(instructors);
     const popularInstructors = instructors.filter(item => item.category === 'Popular');
     return (
-        <div>
-            <h1 className="text-stone-800 text-5xl text-center font-bold my-20">Our Popular Instructors</h1>
-        
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center justify-center">
-                {
-                    popularInstructors.map(instructor => <div
-                        key={instructor._id}
-                    >
-                        <div>
-                            <div className="card w-96 bg-emerald-400 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">{instructor.name}</h2>
-                                    <p className="badge badge-outline ">{instructor.category}</p>
+        <div className="my-20">
+            <h1 className="text-stone-800  text-5xl text-center font-bold my-20">Our Popular Instructors</h1>
+
+            <Swiper
+                slidesPerView={4}
+                spaceBetween={30}
+                centeredSlides={true}
+                pagination={{
+                    clickable: true,
+                }}
+                
+                className="mySwiper"
+            >
+                
+                    {
+                        popularInstructors.map(instructor => <SwiperSlide
+                            key={instructor._id}
+                        >
+                            <div className="mr-4">
+                                <div className="card w-full bg-emerald-400 shadow-xl">
+                                    <div className="card-body">
+                                        <h2 className="card-title">{instructor.name}</h2>
+                                        <p className="badge badge-outline ">{instructor.category}</p>
+                                    </div>
+                                    <figure><img src={instructor.photo} alt="Shoes" /></figure>
                                 </div>
-                                <figure><img src={instructor.photo} alt="Shoes" /></figure>
                             </div>
-                        </div>
-                    </div>)
-                }
-                </div>
-           
+                        </SwiperSlide>)
+                    }
+             
+
+            </Swiper>
+            {/* </div> */}
+
         </div>
     );
 };

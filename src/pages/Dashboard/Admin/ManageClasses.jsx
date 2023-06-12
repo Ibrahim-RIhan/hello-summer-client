@@ -1,11 +1,19 @@
 import useClasses from "../../../hooks/useClasses";
 import axios from "axios";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const ManageClasses = () => {
     const [classes, refetch] = useClasses()
-
-
+    const [showModal, setShowModal] = useState(false);
+    const [classID, setclassID] = useState(null)
+    const openModal = (c) => {
+        setShowModal(true);
+        setclassID(c)
+    };
+    const closeModal = () => {
+        setShowModal(false);
+    };
     const handleApprove = id => {
         axios.patch(`http://localhost:5000/classes/approve/${id}`)
             .then((response) => {
@@ -31,16 +39,28 @@ const ManageClasses = () => {
 
             })
     }
+    const handleFeedback = event => {
+        event.preventDefault()
+        const id =classID._id;
+        const form = event.target;
+        const feedback = form.feedback.value;
+        const newFeedback = {feedback}
+        axios.patch(`http://localhost:5000/classes/feedback/${id}` , newFeedback)
+        .then(() =>{
+           setShowModal(false)
+           setclassID(null)
+        })
+    }
 
 
 
     return (
         <div>
-            <p className="text-center text-2xl font-semibold text-red-400 my-10">Current Number of Classes : {classes.length}</p>
+            <p className="text-center text-2xl font-semibold text-purple-500 my-10">Current Number of Classes : {classes.length}</p>
             <div className="overflow-x-auto">
                 <table className="table table-lg">
-                  
-                    <thead>
+
+                    <thead className="bg-emerald-500 text-base">
                         <tr className="text-center">
                             <th>#</th>
                             <th>Photo</th>
@@ -49,6 +69,7 @@ const ManageClasses = () => {
                             <th>Price </th>
                             <th>Status</th>
                             <th >Action</th>
+                            <th >Feedback</th>
 
                         </tr>
                     </thead>
@@ -74,15 +95,34 @@ const ManageClasses = () => {
                                         <button
                                             onClick={() => handleDeny(singleClass._id)}
                                             disabled={singleClass.status === 'Approved'}
-                                            className="btn btn-error  btn-sm">Deny</button>
+                                            className="btn btn-error btn-sm">Deny</button>
+
                                     </div>
 
                                 </td>
+                                <td>
+                                    <button className="btn btn-accent btn-sm" onClick={()=>openModal(singleClass)}>Feedback</button>
+                                </td>
+
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
+            {showModal && (
+
+                <div className="fixed inset-0 flex items-center justify-center z-50">
+                    <form onSubmit={(e) => handleFeedback(e , )} className="bg-orange-300 rounded-lg py-10  px-20">
+                        <h2 className="text-xl font-bold mb-4">Feedback</h2>
+                        <textarea name="feedback" className="textarea textarea-lg w-full textarea-info" placeholder="Send Feedback"></textarea>
+                        <div className="my-5">
+                            <button className="btn btn-sm btn-accent " onClick={closeModal}>Close</button>
+                            <input className="btn ml-5 btn-success btn-sm " type="submit" value="Send Feedback" />
+                        </div>
+                    </form>
+                </div>
+
+            )}
         </div>
     );
 };

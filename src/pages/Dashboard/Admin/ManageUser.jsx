@@ -67,11 +67,12 @@ const ManageUser = () => {
     }
     return (
         <div>
-            <p className="text-center text-2xl font-semibold text-red-400 my-10">Current User : {users.length}</p>
+            <p className="text-center text-2xl font-semibold text-purple-500 my-10">Total User : {users.length}</p>
+
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table table-lg">
                     {/* head */}
-                    <thead>
+                    <thead className="bg-emerald-500 text-base">
                         <tr>
                             <th>#</th>
                             <th>Photo</th>
@@ -85,22 +86,23 @@ const ManageUser = () => {
                     <tbody>
                         {
                             users.map((user, index) => <tr
+                            className="text-center"
                                 key={user?._id}
                             >
-                                <th>{index + 1}</th>
-                                <td><img className="w-10 h-10" src={user?.photo} alt="" /></td>
-                                <td>{user?.name}</td>
-                                <td>{user?.email}</td>
-                                <td>{user?.role}</td>
-                                <td>
+                                <th className="text-center">{index + 1}</th>
+                                <td  className="text-center"><img className="w-10 h-10" src={user?.photo} alt="" /></td>
+                                <td  className="text-center">{user?.name}</td>
+                                <td  className="text-center">{user?.email}</td>
+                                <td  className="text-center">{user?.role}</td>
+                                <td  className="text-center">
                                     {
-                                        user?.role == "admin" ? <MdVerifiedUser className="text-2xl"></MdVerifiedUser> :
+                                        user?.role == "Admin" ? <MdVerifiedUser className="text-2xl"></MdVerifiedUser> :
                                             <RiAdminLine className="text-2xl" onClick={() => handleMakeAdmin(user)}></RiAdminLine>
                                     }
                                 </td>
-                                <td>
+                                <td  className="text-center">
                                     {
-                                        user?.role == "instructor" ? <MdVerifiedUser className="text-2xl"></MdVerifiedUser> :
+                                        user?.role == "Instructor" ? <MdVerifiedUser className="text-2xl"></MdVerifiedUser> :
                                             <FaChalkboardTeacher className="text-2xl" onClick={() => handleMakeInstructor(user)}></FaChalkboardTeacher>
                                     }
                                 </td>

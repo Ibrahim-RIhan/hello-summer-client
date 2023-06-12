@@ -10,7 +10,7 @@ const MyClasses = () => {
 
     return (
         <div className="ml-10">
-
+            <h1 className="text-3xl text-purple-500 text-center font-semibold ">My Total Class : {myClasses.length}</h1>
             <div className="grid justify-center items-center mx-auto justify-items-center  grid-cols-1 md:grid-cols-3 my-20 gap-20">
                 {
                     myClasses.map((singleClass) =>

@@ -19,7 +19,7 @@ const FaqSection = () => {
       answer:
         'We maintain small class sizes to ensure personalized attention and guidance. The maximum class size is 15 students per instructor.'
     },
-    // Add more FAQs as needed
+   
   ];
 
   const toggleAccordion = (index) => {
@@ -30,7 +30,7 @@ const FaqSection = () => {
     <div>
         <h1 className='font-bold text-center text-5xl text-stone-800  mb-8 mt-20'>Frequently Asked Questions</h1>
         <div className='flex justify-around items-center' >
-        <img className=' ' src='https://img.freepik.com/free-vector/faqs-concept-illustration_114360-5185.jpg?size=626&ext=jpg&uid=R90445011&ga=GA1.2.576645490.1680271128&semt=sph' alt="" />
+        <img className=' ' src='https://img.freepik.com/free-vector/questions-concept-illustration_114360-1513.jpg?size=626&ext=jpg&uid=R90445011&ga=GA1.2.576645490.1680271128&semt=sph' alt="" />
         <div className="max-w-3xl mx-auto">
       {faqData.map((faq, index) => (
         <div

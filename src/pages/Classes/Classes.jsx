@@ -25,7 +25,7 @@ const Classes = () => {
             axios.post('http://localhost:5000/selectedClass', selectedClass)
                 .then((response) => {
                     if (response.data.acknowledged) {
-                        Swal.fire('Class Added to selected class Successfully')
+                        Swal.fire('Class Added to your selected Class Successfully')
                         refetch();
                     }
                 })

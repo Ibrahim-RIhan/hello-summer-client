@@ -20,7 +20,7 @@ const MySelectedClass = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`http://localhost:5000/selectedClass/${id}`)
+                    axios.delete(`shttp://localhost:5000/electedClass/${id}`)
                         .then(() => {
                             Swal.fire(
                                 'Deleted!',
@@ -33,7 +33,7 @@ const MySelectedClass = () => {
             })
     }
     return (
-        <div>
+        <div className="ml-5">
             <div className="grid grid-cols-1 md:grid-cols-2 md:mr-10  gap-5  justify-center items-center">
                 {selectedClasses.map(item => <div
                     key={item._id}
