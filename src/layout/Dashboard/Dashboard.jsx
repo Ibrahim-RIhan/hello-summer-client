@@ -4,9 +4,11 @@ import Footer from '../../Shared/Footer/Footer';
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../../hooks/useAdmin';
 import useInstructor from '../../hooks/useInstructor';
+import useTitle from '../../hooks/useTitle';
 
 
 const Dashboard = () => {
+    useTitle('Dashboard');
   const [isAdmin] = useAdmin();
   console.log(isAdmin);
   const [isInstructor] =useInstructor();

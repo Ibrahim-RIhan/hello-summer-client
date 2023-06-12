@@ -1,7 +1,9 @@
+import useTitle from "../../hooks/useTitle";
 import useUsers from "../../hooks/useUsers";
 
 
 const Instructors = () => {
+    useTitle("Instructors")
     const [users] = useUsers();
     const instructors = users.filter(item => item.role === 'Instructor')
     return (

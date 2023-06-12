@@ -5,10 +5,12 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useSelectedClass from "../../hooks/useSelectedClass";
+import useTitle from "../../hooks/useTitle";
 
 
 
 const Classes = () => {
+    useTitle('Classes')
     const [classes, refetch] = useClasses();
     const [selectedClasses] = useSelectedClass()
     const navigate = useNavigate()
@@ -20,6 +22,7 @@ const Classes = () => {
     }
 
     const handleSelectClass = Class => {
+
         if (user) {
             const selectedClass = { classId: Class._id, className: Class.className, image: Class.classImage, price: Class.price, email: user.email, instructorName: Class.instructorName, seats: Class.seats, }
             axios.post('https://hello-summer-server-opal.vercel.app/selectedClass', selectedClass)
