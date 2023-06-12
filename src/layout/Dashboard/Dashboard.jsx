@@ -7,10 +7,9 @@ import useInstructor from '../../hooks/useInstructor';
 
 
 const Dashboard = () => {
-  const [isAdmin] = useAdmin();
-  const [isInstructor] =useInstructor();
-  console.log(isInstructor);
-  console.log(isAdmin);
+//   const [isAdmin] = useAdmin();
+//   const [isInstructor] =useInstructor();
+ 
   
     const studentItems = <>
     <li><Link to="dashboard/selectedClass">My Selected Classes</Link></li>

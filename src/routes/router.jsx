@@ -71,7 +71,7 @@ const router = createBrowserRouter([
           element : <MySelectedClass></MySelectedClass>
         },
         {
-          path: 'dashboard/payment',
+          path: 'payment/:item',
           element : <Payment></Payment>
         },
       ]

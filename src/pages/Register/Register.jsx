@@ -6,6 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useTitle from "../../hooks/useTitle";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
@@ -31,7 +32,7 @@ const Register = () => {
     const handleGoogleSignIn = () => {
         signInGoogle()
             .then((result) => {
-                const savedUser = { name: result.user.displayName, email: result.user.email, photo: result.user.photoURL, role: 'Student' }
+                const savedUser = { name: result.user.displayName, email: result.user.email, photo: result.user.photoURL, role: 'Student' ,category : 'New' }
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
@@ -41,7 +42,7 @@ const Register = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        Swal.fire('User Created Successfully')
                     })
             })
             .catch((error) => {
@@ -55,7 +56,7 @@ const Register = () => {
             .then(() => {
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email, photo: data.photo, role: 'Student' }
+                        const saveUser = { name: data.name, email: data.email, photo: data.photo, role: 'Student', category : 'New' }
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -66,8 +67,10 @@ const Register = () => {
                             .then(res => res.json())
                             .then(data => {
                                 if (data.insertedId) {
+                                 
                                     logOut()
                                         .then(() => {
+                                            Swal.fire('User Created Successfully')
                                             reset();
                                             navigate('/login');
                                         })

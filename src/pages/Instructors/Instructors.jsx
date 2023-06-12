@@ -3,7 +3,7 @@ import useUsers from "../../hooks/useUsers";
 
 const Instructors = () => {
     const [users] = useUsers();
-    const instructors = users.filter(item => item.role === 'instructor')
+    const instructors = users.filter(item => item.role === 'Instructor')
     console.log(instructors);
     return (
         <div className="my-10 ">
