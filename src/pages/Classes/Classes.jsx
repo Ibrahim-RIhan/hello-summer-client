@@ -9,7 +9,7 @@ import useSelectedClass from "../../hooks/useSelectedClass";
 
 
 const Classes = () => {
-    const [classes] = useClasses();
+    const [classes, refetch] = useClasses();
     const [selectedClasses] = useSelectedClass()
     const navigate = useNavigate()
     const { user } = useContext(AuthContext)
@@ -26,7 +26,7 @@ const Classes = () => {
                 .then((response) => {
                     if (response.data.acknowledged) {
                         Swal.fire('Class Added to selected class Successfully')
-
+                        refetch();
                     }
                 })
         }
@@ -55,7 +55,7 @@ const Classes = () => {
                             <div className="card-actions justify-end">
                                 <button
                                     onClick={() => handleSelectClass(singleClass)}
-                                    className={`${singleClass.seats === 0 ? "btn-disabled btn" : "btn btn-primary"}`}
+                                    className={`${singleClass.seats === "0" ? "btn-disabled btn" : "btn btn-primary"}`}
                                     disabled={selectedClasses.some((item) => item.classId === singleClass._id)}
                                 >
                                     {selectedClasses.some((item) => item.classId === singleClass._id) ? "Selected" : "Select"}
