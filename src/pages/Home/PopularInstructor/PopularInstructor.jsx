@@ -1,5 +1,5 @@
-// import { Swiper, SwiperSlide } from "swiper";
-import Swiper from "swiper";
+
+
 import useUsers from "../../../hooks/useUsers";
 
 
@@ -10,7 +10,7 @@ const PopularInstructor = () => {
     const popularInstructors = instructors.filter(item => item.category === 'Popular');
     return (
         <div>
-            <h1 className="text-emerald-400 text-5xl text-center fond-bold my-20">Our Popular Instructors</h1>
+            <h1 className="text-stone-800 text-5xl text-center font-bold my-20">Our Popular Instructors</h1>
         
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center justify-center">
                 {
