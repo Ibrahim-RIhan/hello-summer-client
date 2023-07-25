@@ -34,7 +34,7 @@ const FaqSection = () => {
   const {View} = useLottie(options);
 
   return (
-    <div className='my-20'>
+    <div className='my-20 container mx-auto'>
       <h1 className='font-bold text-center text-5xl text-stone-800  mb-8 mt-20'>Frequently Asked Questions</h1>
       <div className='flex justify-center flex-col md:flex-row items-center' >
         {/* <img className=' ' src='https://img.freepik.com/free-vector/questions-concept-illustration_114360-1513.jpg?size=626&ext=jpg&uid=R90445011&ga=GA1.2.576645490.1680271128&semt=sph' alt="" /> */}
